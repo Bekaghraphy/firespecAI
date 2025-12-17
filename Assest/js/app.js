@@ -1,41 +1,36 @@
-let currentScope = "egypt";
+const chatBox = document.getElementById("chat");
+const input = document.querySelector(".input-area input");
+const sendBtn = document.querySelector(".input-area button");
 
-document.querySelectorAll(".scope button").forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll(".scope button").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    currentScope = btn.dataset.scope;
-  };
-});
+// إضافة رسالة للشات
+function addMessage(text, type) {
+  const msg = document.createElement("div");
+  msg.className = `message ${type}`;
+  msg.innerHTML = text;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-document.getElementById("sendBtn").onclick = async () => {
-  const input = document.getElementById("userInput");
-  const question = input.value.trim();
-  if (!question) return;
+// إرسال رسالة المستخدم
+sendBtn.addEventListener("click", () => {
+  const text = input.value.trim();
+  if (!text) return;
 
-  addMessage(question, "user");
+  addMessage(text, "user");
   input.value = "";
 
-  const data = await fetch("assets/data/knowledge.json").then(r => r.json());
-  const result = data.find(
-    d => d.scope === currentScope && d.text.toLowerCase().includes(question.toLowerCase())
-  );
-
-  if (result) {
+  // رد مبدئي من السيستم (placeholder)
+  setTimeout(() => {
     addMessage(
-      `${result.text}<br><small>Source: ${result.source} – Page ${result.page}</small>`,
+      "I will answer based on fire system standards once knowledge base is connected.",
       "assistant"
     );
-  } else {
-    addMessage("No reference found in current scope.", "assistant");
-  }
-};
+  }, 600);
+});
 
-function addMessage(text, type) {
-  const chat = document.getElementById("chat");
-  const div = document.createElement("div");
-  div.className = `message ${type}`;
-  div.innerHTML = text;
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-}
+// إرسال بالـ Enter
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    sendBtn.click();
+  }
+});
