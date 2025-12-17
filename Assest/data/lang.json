@@ -1,33 +1,46 @@
 {
   "en": {
     "direction": "ltr",
-    "app_name": "FireSpec AI",
+    "app_name": "FireSpec <span>AI</span>",
     "tagline": "Fire systems knowledge. Structured. Verified.",
     "scope_title": "Standard Scope",
+    "scope_hint": "Select a region to prioritize its references.",
     "scopes": {
       "egypt": "Egypt",
       "saudi": "Saudi Arabia",
       "international": "International"
     },
-    "welcome": "Ask about fire alarm, firefighting systems, or applicable standards.",
+    "chips": {
+      "fire_alarm": "Fire Alarm",
+      "sprinklers": "Sprinklers",
+      "pumps": "Pumps",
+      "commissioning": "Commissioning"
+    },
+    "welcome": "Ask about fire alarm, firefighting systems, or standards.",
     "placeholder": "Ask FireSpec about fire systems, codes, or standards...",
     "send": "Send",
-    "no_result": "No reference found for your question in the selected scope."
+    "safety_note": "This tool is for reference guidance and document lookup. Final design/approval requires a licensed engineer and local authority review."
   },
-
   "ar": {
     "direction": "rtl",
-    "app_name": "فاير سبيك AI",
+    "app_name": "فاير سبيك <span>AI</span>",
     "tagline": "معرفة أنظمة الحريق. منظمة. موثوقة.",
     "scope_title": "نطاق المعايير",
+    "scope_hint": "اختار الدولة علشان نركّز على مراجعها.",
     "scopes": {
       "egypt": "مصر",
       "saudi": "السعودية",
       "international": "دولي"
     },
-    "welcome": "اسأل عن أنظمة إنذار أو إطفاء الحريق أو المعايير المعتمدة.",
+    "chips": {
+      "fire_alarm": "إنذار الحريق",
+      "sprinklers": "الرشاشات",
+      "pumps": "مضخات الحريق",
+      "commissioning": "التشغيل والاختبار"
+    },
+    "welcome": "اسأل عن أنظمة الإنذار أو الإطفاء أو المعايير.",
     "placeholder": "اسأل فاير سبيك عن أنظمة الحريق أو الأكواد والمعايير...",
     "send": "إرسال",
-    "no_result": "لا يوجد مرجع مطابق لسؤالك ضمن النطاق المختار."
+    "safety_note": "الأداة للإرشاد المرجعي والبحث داخل المحتوى. التصميم/الاعتماد النهائي مسؤولية مهندس مرخّص ومراجعة الجهة المختصة."
   }
 }
