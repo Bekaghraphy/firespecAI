@@ -143,3 +143,11 @@ body {
   border-radius: 12px;
   cursor: pointer;
 }
+html[dir="rtl"] .message.user {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .message.assistant {
+  margin-right: 0;
+}
