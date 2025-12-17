@@ -1,32 +1,66 @@
-body {
-  margin: 0;
-  background: #0b0b0b;
-  font-family: Arial, sans-serif;
-  color: #eaeaea;
+* {
+  box-sizing: border-box;
 }
 
-.app {
-  max-width: 900px;
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0b0b;
+  color: #eaeaea;
+  overflow: hidden;
+}
+
+/* خلفية متحركة */
+.background {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255,111,0,0.15), transparent 60%),
+    radial-gradient(circle at bottom, rgba(211,47,47,0.12), transparent 60%);
+  animation: pulse 6s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.container {
+  max-width: 520px;
   margin: auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 16px;
 }
 
-header {
-  padding: 20px;
+.header {
   text-align: center;
+  position: relative;
 }
 
 .logo {
   font-size: 28px;
   font-weight: bold;
 }
+
 .logo span {
   color: #ff6f00;
 }
 
 .tagline {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+.lang-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
   font-size: 13px;
   opacity: 0.8;
 }
@@ -35,58 +69,77 @@ header {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin: 16px 0;
 }
 
 .scope button {
   background: transparent;
   border: 1px solid #333;
   color: #eaeaea;
-  padding: 8px 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
   cursor: pointer;
+  transition: 0.3s;
 }
-.scope button.active {
+
+.scope button.active,
+.scope button:hover {
   border-color: #ff6f00;
   color: #ff6f00;
 }
 
-.chat {
+.chat-box {
   flex: 1;
-  padding: 20px;
+  background: rgba(18,18,18,0.85);
+  border-radius: 16px;
+  padding: 14px;
   overflow-y: auto;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
 }
 
 .message {
-  max-width: 70%;
+  max-width: 85%;
   margin-bottom: 12px;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  animation: fadeIn 0.3s ease;
 }
-.assistant {
-  background: #1a1a1a;
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.user {
+
+.message.assistant {
+  background: #1c1c1c;
+}
+
+.message.user {
   background: #ff6f00;
   color: #000;
   margin-left: auto;
 }
 
-footer {
+.input-area {
   display: flex;
-  padding: 15px;
-  border-top: 1px solid #222;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-footer input {
+.input-area input {
   flex: 1;
   background: #121212;
   border: 1px solid #333;
   color: #fff;
-  padding: 10px;
+  padding: 12px;
+  border-radius: 12px;
 }
-footer button {
-  margin-left: 10px;
+
+.input-area button {
   background: #ff6f00;
   border: none;
-  padding: 10px 16px;
+  color: #000;
+  padding: 12px 18px;
+  border-radius: 12px;
   cursor: pointer;
 }
