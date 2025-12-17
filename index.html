@@ -1,44 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FireSpec AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-  <div class="background"></div>
-
-  <div class="container">
-    <header class="header">
-      <div class="logo" id="appName">
-  FireSpec <span>AI</span>
-</div>
-
-<div class="lang-toggle" id="langToggle">AR</div>
-
-<p class="tagline" id="tagline">
-  Fire systems knowledge. Structured. Verified.
-</p>
-
-<div class="scope">
-  <button class="active" data-scope="egypt" id="scope-egypt">Egypt</button>
-  <button data-scope="saudi" id="scope-saudi">Saudi</button>
-  <button data-scope="international" id="scope-international">International</button>
-</div>
-
-<div class="chat-box" id="chat"></div>
-
-<input
-  type="text"
-  id="userInput"
-  placeholder="Ask FireSpec..."
-/>
-
-<button id="sendBtn">Send</button>
-    </div>
+  <!-- Animated background -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__grid"></div>
+    <div class="bg__glow bg__glow--a"></div>
+    <div class="bg__glow bg__glow--b"></div>
+    <div class="bg__embers"></div>
+    <div class="bg__scan"></div>
   </div>
+
+  <main class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true">
+          <span class="pulse"></span>
+          <span class="pulse pulse--2"></span>
+          <span class="pulse pulse--3"></span>
+          <span class="dot"></span>
+        </div>
+
+        <div class="brand__text">
+          <div class="brand__name" id="appName">FireSpec <span>AI</span></div>
+          <div class="brand__tag" id="tagline">Fire systems knowledge. Structured. Verified.</div>
+        </div>
+      </div>
+
+      <div class="topbar__actions">
+        <button class="pill pill--ghost" id="langToggle" type="button" aria-label="Toggle language">AR</button>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="scopeCard">
+        <div class="scopeCard__row">
+          <div class="scopeCard__title" id="scopeTitle">Standard Scope</div>
+          <div class="scopeCard__hint" id="scopeHint">Select a region to prioritize its references.</div>
+        </div>
+
+        <div class="scopeTabs" role="tablist" aria-label="Scope">
+          <button class="tab is-active" type="button" data-scope="egypt" id="scope-egypt" role="tab" aria-selected="true">
+            <span class="tab__dot"></span>
+            <span class="tab__txt">Egypt</span>
+          </button>
+          <button class="tab" type="button" data-scope="saudi" id="scope-saudi" role="tab" aria-selected="false">
+            <span class="tab__dot"></span>
+            <span class="tab__txt">Saudi</span>
+          </button>
+          <button class="tab" type="button" data-scope="international" id="scope-international" role="tab" aria-selected="false">
+            <span class="tab__dot"></span>
+            <span class="tab__txt">International</span>
+          </button>
+        </div>
+
+        <div class="chips" id="chips">
+          <span class="chip" id="chip1">Fire Alarm</span>
+          <span class="chip" id="chip2">Sprinklers</span>
+          <span class="chip" id="chip3">Pumps</span>
+          <span class="chip" id="chip4">Commissioning</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="chatShell">
+      <div class="chat" id="chat" aria-live="polite">
+        <div class="msg msg--ai">
+          <div class="msg__meta">
+            <span class="badge badge--ai">FireSpec AI</span>
+            <span class="badge" id="scopeBadge">EGYPT</span>
+          </div>
+          <div class="msg__bubble" id="welcomeMsg">
+            Ask about fire alarm, firefighting systems, or standards.
+          </div>
+        </div>
+      </div>
+
+      <div class="composer">
+        <div class="composer__box">
+          <input id="userInput" type="text" placeholder="Ask FireSpec about fire systems, codes, or standards..." autocomplete="off" />
+          <button id="sendBtn" class="send" type="button">
+            <span class="send__ico" aria-hidden="true">➤</span>
+            <span class="send__txt" id="sendTxt">Send</span>
+          </button>
+        </div>
+
+        <div class="composer__sub">
+          <span class="note" id="safetyNote">
+            This tool is for reference guidance and document lookup. Final design/approval requires a licensed engineer and local authority review.
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script src="assets/js/app.js"></script>
 </body>
